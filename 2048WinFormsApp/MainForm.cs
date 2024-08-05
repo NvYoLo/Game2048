@@ -11,6 +11,7 @@ namespace _2048WinFormsApp
         private static Random rndIndex = new Random();
         private int score = 0;
         private List<string> ints = new List<string> { "2", "2", "2", "4" };
+        
 
         public MainForm()
         {
@@ -81,8 +82,10 @@ namespace _2048WinFormsApp
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            bool flagRight = false, flagLeft = false, flagUp = false , flagDown = false;
             if (e.KeyCode == Keys.Right)
             {
+                
                 for (int i = 0; i < mapSize; i++)
                 {
                     for (int j = mapSize - 1; j >= 0; j--)
@@ -99,12 +102,15 @@ namespace _2048WinFormsApp
                                         score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
                                         labelsMap[i, k].Text = string.Empty;
+                                        flagRight = true;
                                     }
                                     break;
                                 }
+                                
                             }
-                        }
+                        }  
                     }
+                    
                 }
                 for (int i = 0; i < mapSize; i++)
                 {
@@ -118,6 +124,7 @@ namespace _2048WinFormsApp
                                 {
                                     labelsMap[i, j].Text = labelsMap[i, k].Text;
                                     labelsMap[i, k].Text = string.Empty;
+                                    flagRight = true;
                                     break;
                                 }
                             }
@@ -127,6 +134,7 @@ namespace _2048WinFormsApp
             }
             if (e.KeyCode == Keys.Left)
             {
+                
                 for (int i = 0; i < mapSize; i++)
                 {
                     for (int j = 0; j < mapSize; j++)
@@ -143,6 +151,7 @@ namespace _2048WinFormsApp
                                         score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
                                         labelsMap[i, k].Text = string.Empty;
+                                        flagLeft = true;
                                     }
                                     break;
                                 }
@@ -162,6 +171,7 @@ namespace _2048WinFormsApp
                                 {
                                     labelsMap[i, j].Text = labelsMap[i, k].Text;
                                     labelsMap[i, k].Text = string.Empty;
+                                    flagLeft = true;
                                     break;
                                 }
                             }
@@ -171,6 +181,7 @@ namespace _2048WinFormsApp
             }
             if (e.KeyCode == Keys.Up)
             {
+                
                 for (int j = 0; j < mapSize; j++)
                 {
                     for (int i = 0; i < mapSize; i++)
@@ -187,6 +198,7 @@ namespace _2048WinFormsApp
                                         score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
                                         labelsMap[k, j].Text = string.Empty;
+                                        flagUp = true;
                                     }
                                     break;
                                 }
@@ -206,6 +218,7 @@ namespace _2048WinFormsApp
                                 {
                                     labelsMap[i, j].Text = labelsMap[k, j].Text;
                                     labelsMap[k, j].Text = string.Empty;
+                                    flagUp = true;
                                     break;
                                 }
                             }
@@ -215,6 +228,7 @@ namespace _2048WinFormsApp
             }
             if (e.KeyCode == Keys.Down)
             {
+                
                 for (int j = 0; j < mapSize; j++)
                 {
                     for (int i = mapSize - 1; i >= 0; i--)
@@ -231,6 +245,7 @@ namespace _2048WinFormsApp
                                         score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
                                         labelsMap[k, j].Text = string.Empty;
+                                        flagDown = true;
                                     }
                                     break;
                                 }
@@ -250,6 +265,7 @@ namespace _2048WinFormsApp
                                 {
                                     labelsMap[i, j].Text = labelsMap[k, j].Text;
                                     labelsMap[k, j].Text = string.Empty;
+                                    flagDown = true;
                                     break;
                                 }
                             }
@@ -257,7 +273,12 @@ namespace _2048WinFormsApp
                     }
                 }
             }
-            GenerateNumber();
+
+            if (flagRight == true || flagLeft == true || flagDown == true || flagUp == true)
+            {
+                GenerateNumber();
+            }
+
             ShowScore();
         }
 

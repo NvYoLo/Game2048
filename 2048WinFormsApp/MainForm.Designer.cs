@@ -36,6 +36,7 @@
             выходToolStripMenuItem = new ToolStripMenuItem();
             помощьToolStripMenuItem = new ToolStripMenuItem();
             правилаИгрыToolStripMenuItem = new ToolStripMenuItem();
+            таToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // 
             // главнаяToolStripMenuItem
             // 
-            главнаяToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { рестартToolStripMenuItem, выходToolStripMenuItem });
+            главнаяToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { рестартToolStripMenuItem, таToolStripMenuItem, выходToolStripMenuItem });
             главнаяToolStripMenuItem.Name = "главнаяToolStripMenuItem";
             главнаяToolStripMenuItem.Size = new Size(63, 20);
             главнаяToolStripMenuItem.Text = "Главная";
@@ -101,6 +102,12 @@
             правилаИгрыToolStripMenuItem.Text = "Правила игры";
             правилаИгрыToolStripMenuItem.Click += правилаИгрыToolStripMenuItem_Click;
             // 
+            // таToolStripMenuItem
+            // 
+            таToolStripMenuItem.Name = "таToolStripMenuItem";
+            таToolStripMenuItem.Size = new Size(189, 22);
+            таToolStripMenuItem.Text = "Таблица результатов";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -111,7 +118,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
-            Text = "Form1";
+            Text = "2048";
             Load += Form1_Load;
             KeyDown += MainForm_KeyDown;
             menuStrip1.ResumeLayout(false);
@@ -130,5 +137,6 @@
         private ToolStripMenuItem правилаИгрыToolStripMenuItem;
         private ToolStripMenuItem рестартToolStripMenuItem;
         private ToolStripMenuItem выходToolStripMenuItem;
+        private ToolStripMenuItem таToolStripMenuItem;
     }
 }
