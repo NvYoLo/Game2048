@@ -8,7 +8,9 @@ namespace _2048WinFormsApp
         private const int mapSize = 4;
         private Label[,] labelsMap;
         private static Random rnd = new Random();
+        private static Random rndIndex = new Random();
         private int score = 0;
+        private List<string> ints = new List<string> { "2", "2", "2", "4" };
 
         public MainForm()
         {
@@ -54,13 +56,15 @@ namespace _2048WinFormsApp
                 var randomNumberLabel = rnd.Next(mapSize * mapSize);
                 var indexRow = randomNumberLabel / mapSize;
                 var indexColumn = randomNumberLabel % mapSize;
+                var randomIndexList = rndIndex.Next(ints.Count);
                 if (labelsMap[indexRow, indexColumn].Text == string.Empty)
                 {
-                    labelsMap[indexRow, indexColumn].Text = "2";
+                    labelsMap[indexRow, indexColumn].Text = ints[randomIndexList];
                     break;
                 }
             }
         }
+
         private Label CreateLabel(int indexRow, int indexColumn)
         {
             var label = new Label();
@@ -260,7 +264,6 @@ namespace _2048WinFormsApp
         private void Ô‡‚ËÎ‡»„˚ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowMenuRules();
-
         }
 
 
