@@ -16,5 +16,20 @@ namespace _2048WinFormsApp
         {
             InitializeComponent();
         }
+
+        private void dataGridViewResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TableResults_Load(object sender, EventArgs e)
+        {
+            dataGridViewResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            var result = SaveResultClass.GetResultGame();
+            foreach (var data in result)
+            {
+                dataGridViewResult.Rows.Add(data.Name, data.Score);
+            }
+        }
     }
 }

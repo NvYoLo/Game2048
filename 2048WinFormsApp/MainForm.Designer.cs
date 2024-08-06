@@ -33,10 +33,11 @@
             menuStrip1 = new MenuStrip();
             главнаяToolStripMenuItem = new ToolStripMenuItem();
             рестартToolStripMenuItem = new ToolStripMenuItem();
+            таToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             помощьToolStripMenuItem = new ToolStripMenuItem();
             правилаИгрыToolStripMenuItem = new ToolStripMenuItem();
-            таToolStripMenuItem = new ToolStripMenuItem();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,14 +78,21 @@
             // рестартToolStripMenuItem
             // 
             рестартToolStripMenuItem.Name = "рестартToolStripMenuItem";
-            рестартToolStripMenuItem.Size = new Size(180, 22);
+            рестартToolStripMenuItem.Size = new Size(189, 22);
             рестартToolStripMenuItem.Text = "Рестарт";
             рестартToolStripMenuItem.Click += рестартToolStripMenuItem_Click;
+            // 
+            // таToolStripMenuItem
+            // 
+            таToolStripMenuItem.Name = "таToolStripMenuItem";
+            таToolStripMenuItem.Size = new Size(189, 22);
+            таToolStripMenuItem.Text = "Таблица результатов";
+            таToolStripMenuItem.Click += таToolStripMenuItem_Click;
             // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(180, 22);
+            выходToolStripMenuItem.Size = new Size(189, 22);
             выходToolStripMenuItem.Text = "Выход";
             выходToolStripMenuItem.Click += выходToolStripMenuItem_Click;
             // 
@@ -102,17 +110,21 @@
             правилаИгрыToolStripMenuItem.Text = "Правила игры";
             правилаИгрыToolStripMenuItem.Click += правилаИгрыToolStripMenuItem_Click;
             // 
-            // таToolStripMenuItem
+            // label2
             // 
-            таToolStripMenuItem.Name = "таToolStripMenuItem";
-            таToolStripMenuItem.Size = new Size(189, 22);
-            таToolStripMenuItem.Text = "Таблица результатов";
+            label2.AutoSize = true;
+            label2.Location = new Point(156, 472);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 3;
+            label2.Text = "label2";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 504);
+            Controls.Add(label2);
             Controls.Add(scoreLabel);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
@@ -138,5 +150,6 @@
         private ToolStripMenuItem рестартToolStripMenuItem;
         private ToolStripMenuItem выходToolStripMenuItem;
         private ToolStripMenuItem таToolStripMenuItem;
+        private Label label2;
     }
 }
