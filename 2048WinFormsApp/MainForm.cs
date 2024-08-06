@@ -6,7 +6,6 @@ namespace _2048WinFormsApp
 {
     public partial class MainForm : Form
     {
-        //private const int mapSize = 4;
         private int mapSize;
         private Label[,] labelsMap;
         private static Random rnd = new Random();
@@ -38,21 +37,21 @@ namespace _2048WinFormsApp
                     {
                         mapSize = 4;
                         Width = 334;
-                        Height = 425;
+                        Height = 445;
                     }
                     return;
                 case 1:
                     {
                         mapSize = 5;
                         Width = 412;
-                        Height = 503;
+                        Height = 523;
                     }
                     return;
                 case 2:
                     {
                         mapSize = 6;
                         Width = 491;
-                        Height = 582;
+                        Height = 602;
 
                     } return;
             }
@@ -66,6 +65,7 @@ namespace _2048WinFormsApp
             ChangeLVL(authorization);
             className = new ClassName(authorization.textBoxName.Text);
             label2.Text = $"Играет игрок - {className.Name}";
+            label3.Text = $"Рекорд за всё время : ";
         }
         private void ShowMenuRules()
         {
@@ -117,7 +117,7 @@ namespace _2048WinFormsApp
             label.Font = new Font("Leelawadee UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label.Size = new Size(70, 70);
             int x = 10 + indexColumn * 76;
-            int y = 80 + indexRow * 76;
+            int y = 100 + indexRow * 76;
             label.Location = new Point(x, y);
             label.TextAlign = ContentAlignment.MiddleCenter;
             return label;

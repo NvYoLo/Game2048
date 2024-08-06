@@ -39,6 +39,7 @@
             правилаИгрыToolStripMenuItem = new ToolStripMenuItem();
             label2 = new Label();
             groupBox1 = new GroupBox();
+            label3 = new Label();
             menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -115,7 +116,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(158, 19);
+            label2.Location = new Point(98, 19);
             label2.Name = "label2";
             label2.Size = new Size(41, 15);
             label2.TabIndex = 3;
@@ -123,16 +124,26 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(scoreLabel);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 24);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(318, 47);
+            groupBox1.Size = new Size(318, 70);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Информация о игре";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(11, 43);
+            label3.Name = "label3";
+            label3.Size = new Size(46, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Рекорд";
             // 
             // MainForm
             // 
@@ -167,5 +178,6 @@
         private ToolStripMenuItem таToolStripMenuItem;
         private Label label2;
         private GroupBox groupBox1;
+        private Label label3;
     }
 }
