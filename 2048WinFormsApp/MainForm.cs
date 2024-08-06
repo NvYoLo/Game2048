@@ -6,33 +6,64 @@ namespace _2048WinFormsApp
 {
     public partial class MainForm : Form
     {
-        private const int mapSize = 4;
+        //private const int mapSize = 4;
+        private int mapSize;
         private Label[,] labelsMap;
         private static Random rnd = new Random();
         private static Random rndIndex = new Random();
         private List<string> ints = new List<string> { "2", "2", "2", "4" };
         private ClassName className;
 
-
-
         public MainForm()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             ShowLoginMenu();
             InitMap();
             GenerateNumber();
             ShowScore();
         }
 
-        private void ShowLoginMenu()
+        private void ChangeLVL(Authorization authorization)
         {
 
+            switch (authorization.comboBoxChooseLVL.SelectedIndex)
+            {
+                case 0:
+                    {
+                        mapSize = 4;
+                        Width = 334;
+                        Height = 425;
+                    }
+                    return;
+                case 1:
+                    {
+                        mapSize = 5;
+                        Width = 412;
+                        Height = 503;
+                    }
+                    return;
+                case 2:
+                    {
+                        mapSize = 6;
+                        Width = 491;
+                        Height = 582;
+
+                    } return;
+            }
+
+        }
+
+        private void ShowLoginMenu()
+        {
             Authorization authorization = new Authorization();
             authorization.ShowDialog();
+            ChangeLVL(authorization);
             className = new ClassName(authorization.textBoxName.Text);
             label2.Text = $"Играет игрок - {className.Name}";
         }
@@ -86,7 +117,7 @@ namespace _2048WinFormsApp
             label.Font = new Font("Leelawadee UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label.Size = new Size(70, 70);
             int x = 10 + indexColumn * 76;
-            int y = 40 + indexRow * 76;
+            int y = 80 + indexRow * 76;
             label.Location = new Point(x, y);
             label.TextAlign = ContentAlignment.MiddleCenter;
             return label;

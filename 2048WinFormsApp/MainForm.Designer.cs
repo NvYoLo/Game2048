@@ -38,13 +38,15 @@
             помощьToolStripMenuItem = new ToolStripMenuItem();
             правилаИгрыToolStripMenuItem = new ToolStripMenuItem();
             label2 = new Label();
+            groupBox1 = new GroupBox();
             menuStrip1.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(9, 471);
+            label1.Location = new Point(11, 19);
             label1.Name = "label1";
             label1.Size = new Size(36, 15);
             label1.TabIndex = 0;
@@ -53,7 +55,7 @@
             // scoreLabel
             // 
             scoreLabel.AutoSize = true;
-            scoreLabel.Location = new Point(52, 472);
+            scoreLabel.Location = new Point(54, 19);
             scoreLabel.Name = "scoreLabel";
             scoreLabel.Size = new Size(13, 15);
             scoreLabel.TabIndex = 1;
@@ -64,7 +66,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { главнаяToolStripMenuItem, помощьToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(320, 24);
+            menuStrip1.Size = new Size(318, 24);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -113,20 +115,31 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(156, 472);
+            label2.Location = new Point(158, 19);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(41, 15);
             label2.TabIndex = 3;
-            label2.Text = "label2";
+            label2.Text = "Игрок";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(scoreLabel);
+            groupBox1.Dock = DockStyle.Top;
+            groupBox1.Location = new Point(0, 24);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(318, 47);
+            groupBox1.TabIndex = 4;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Информация о игре";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(320, 504);
-            Controls.Add(label2);
-            Controls.Add(scoreLabel);
-            Controls.Add(label1);
+            ClientSize = new Size(318, 386);
+            Controls.Add(groupBox1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
@@ -135,6 +148,8 @@
             KeyDown += MainForm_KeyDown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,5 +166,6 @@
         private ToolStripMenuItem выходToolStripMenuItem;
         private ToolStripMenuItem таToolStripMenuItem;
         private Label label2;
+        private GroupBox groupBox1;
     }
 }

@@ -12,7 +12,7 @@ namespace _2048WinFormsApp
 {
     public partial class Authorization : Form
     {
-        
+
         public Authorization()
         {
             InitializeComponent();
@@ -21,7 +21,13 @@ namespace _2048WinFormsApp
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+
             Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
