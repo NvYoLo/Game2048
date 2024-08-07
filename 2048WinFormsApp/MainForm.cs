@@ -28,7 +28,7 @@ namespace _2048WinFormsApp
             ShowRecord();
             GenerateNumber();
             ShowScore();
-            
+               
         }
 
         private void ShowRecord()
@@ -139,7 +139,32 @@ namespace _2048WinFormsApp
             int y = 100 + indexRow * 76;
             label.Location = new Point(x, y);
             label.TextAlign = ContentAlignment.MiddleCenter;
+            label.TextChanged += Label_TextChanged;
             return label;
+        }
+
+        private void Label_TextChanged(object? sender, EventArgs e)
+        {
+            var label = (Label?)sender;
+            switch (label.Text)
+            {
+                case "4": label.BackColor = Color.FromArgb(238, 225, 201); break;
+                case "8": label.BackColor = Color.FromArgb(243, 178, 122); break;
+                case "16": label.BackColor = Color.FromArgb(246, 150, 100); break;
+                case "32": label.BackColor = Color.FromArgb(247, 124, 95); break;
+                case "64": label.BackColor = Color.FromArgb(247, 94, 59); break;
+                case "128": label.BackColor = Color.FromArgb(237, 207, 114); break;
+                case "256": label.BackColor = Color.FromArgb(237, 204, 97); break;
+                case "512": label.BackColor = Color.FromArgb(237, 200, 80); break;
+                case "1024": label.BackColor = Color.FromArgb(237, 197, 63); break;
+                case "2048": label.BackColor = Color.FromArgb(237, 194, 46); break;
+                case "4096": label.BackColor = Color.FromArgb(173, 216, 230); break;
+                case "8192": label.BackColor = Color.FromArgb(135, 206, 250); break;
+                case "16384": label.BackColor = Color.FromArgb(0, 191, 255); break;
+                case "32768": label.BackColor = Color.FromArgb(30, 144, 255); break;
+                case "65536": label.BackColor = Color.FromArgb(0, 0, 255); break;
+                default: label.BackColor = Color.FromArgb(238, 228, 218); break;
+            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -342,7 +367,6 @@ namespace _2048WinFormsApp
             {
                 GenerateNumber();
             }
-            ChooseColor();
             ShowScore();
             if (EndGame())
             {
@@ -417,30 +441,5 @@ namespace _2048WinFormsApp
             table.ShowDialog();
         }
 
-        private void ChooseColor()
-        {
-            foreach (var label in labelsMap)
-            {
-                switch (label.Text)
-                {
-                    case "4": label.BackColor = Color.FromArgb(238, 225, 201); break;
-                    case "8": label.BackColor = Color.FromArgb(243, 178, 122); break;
-                    case "16": label.BackColor = Color.FromArgb(246, 150, 100); break;
-                    case "32": label.BackColor = Color.FromArgb(247, 124, 95); break;
-                    case "64": label.BackColor = Color.FromArgb(247, 94, 59); break;
-                    case "128": label.BackColor = Color.FromArgb(237, 207, 114); break;
-                    case "256": label.BackColor = Color.FromArgb(237, 204, 97); break;
-                    case "512": label.BackColor = Color.FromArgb(237, 200, 80); break;
-                    case "1024": label.BackColor = Color.FromArgb(237, 197, 63); break;
-                    case "2048": label.BackColor = Color.FromArgb(237, 194, 46); break;
-                    case "4096": label.BackColor = Color.FromArgb(173, 216, 230); break;
-                    case "8192": label.BackColor = Color.FromArgb(135, 206, 250); break;
-                    case "16384": label.BackColor = Color.FromArgb(0, 191, 255); break;
-                    case "32768": label.BackColor = Color.FromArgb(30, 144, 255); break;
-                    case "65536": label.BackColor = Color.FromArgb(0, 0, 255); break;
-                    default: label.BackColor = Color.FromArgb(238, 228, 218); break;
-                }
-            }
-        }
     }
 }
