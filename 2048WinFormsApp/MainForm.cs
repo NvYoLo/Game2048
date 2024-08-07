@@ -10,8 +10,9 @@ namespace _2048WinFormsApp
         private Label[,] labelsMap;
         private static Random rnd = new Random();
         private static Random rndIndex = new Random();
-        private List<string> ints = new List<string> { "2", "2", "2", "4" };
+        private List<int> ints = new List<int> { 2, 2, 2, 4 };
         private ClassName className;
+
 
         public MainForm()
         {
@@ -24,8 +25,24 @@ namespace _2048WinFormsApp
 
             ShowLoginMenu();
             InitMap();
+            ShowRecord();
             GenerateNumber();
             ShowScore();
+            
+        }
+
+        private void ShowRecord()
+        {
+            var Record = SaveResultClass.GetResultGame();
+            var MaxScore = Record.Max(className => className.Score);
+            if (Record.Count == 0)
+            {
+                labelRecord.Text = 0.ToString();
+            }
+            else
+            {
+                labelRecord.Text = MaxScore.ToString();
+            }
         }
 
         private void ChangeLVL(Authorization authorization)
@@ -53,7 +70,8 @@ namespace _2048WinFormsApp
                         Width = 491;
                         Height = 602;
 
-                    } return;
+                    }
+                    return;
             }
 
         }
@@ -65,7 +83,7 @@ namespace _2048WinFormsApp
             ChangeLVL(authorization);
             className = new ClassName(authorization.textBoxName.Text);
             label2.Text = $"Играет игрок - {className.Name}";
-            label3.Text = $"Рекорд за всё время : ";
+            labelRecord.Text = $"Рекорд за всё время : ";
         }
         private void ShowMenuRules()
         {
@@ -103,7 +121,7 @@ namespace _2048WinFormsApp
                 var randomIndexList = rndIndex.Next(ints.Count);
                 if (labelsMap[indexRow, indexColumn].Text == string.Empty)
                 {
-                    labelsMap[indexRow, indexColumn].Text = ints[randomIndexList];
+                    labelsMap[indexRow, indexColumn].Text = ints[randomIndexList].ToString();
                     break;
                 }
             }
@@ -116,6 +134,7 @@ namespace _2048WinFormsApp
             label.BorderStyle = BorderStyle.FixedSingle;
             label.Font = new Font("Leelawadee UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label.Size = new Size(70, 70);
+            label.BackColor = Color.FromArgb(238, 228, 218);
             int x = 10 + indexColumn * 76;
             int y = 100 + indexRow * 76;
             label.Location = new Point(x, y);
@@ -167,6 +186,7 @@ namespace _2048WinFormsApp
                                 if (labelsMap[i, k].Text != string.Empty)
                                 {
                                     labelsMap[i, j].Text = labelsMap[i, k].Text;
+
                                     labelsMap[i, k].Text = string.Empty;
                                     flagRight = true;
                                     break;
@@ -193,6 +213,7 @@ namespace _2048WinFormsApp
                                         var number = int.Parse(labelsMap[i, j].Text);
                                         className.Score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
+
                                         labelsMap[i, k].Text = string.Empty;
                                         flagLeft = true;
                                     }
@@ -239,6 +260,7 @@ namespace _2048WinFormsApp
                                         var number = int.Parse(labelsMap[i, j].Text);
                                         className.Score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
+
                                         labelsMap[k, j].Text = string.Empty;
                                         flagUp = true;
                                     }
@@ -285,6 +307,7 @@ namespace _2048WinFormsApp
                                         var number = int.Parse(labelsMap[i, j].Text);
                                         className.Score += number * 2;
                                         labelsMap[i, j].Text = (number * 2).ToString();
+
                                         labelsMap[k, j].Text = string.Empty;
                                         flagDown = true;
                                     }
@@ -319,7 +342,7 @@ namespace _2048WinFormsApp
             {
                 GenerateNumber();
             }
-
+            ChooseColor();
             ShowScore();
             if (EndGame())
             {
@@ -392,6 +415,32 @@ namespace _2048WinFormsApp
         {
             TableResults table = new TableResults();
             table.ShowDialog();
+        }
+
+        private void ChooseColor()
+        {
+            foreach (var label in labelsMap)
+            {
+                switch (label.Text)
+                {
+                    case "4": label.BackColor = Color.FromArgb(238, 225, 201); break;
+                    case "8": label.BackColor = Color.FromArgb(243, 178, 122); break;
+                    case "16": label.BackColor = Color.FromArgb(246, 150, 100); break;
+                    case "32": label.BackColor = Color.FromArgb(247, 124, 95); break;
+                    case "64": label.BackColor = Color.FromArgb(247, 94, 59); break;
+                    case "128": label.BackColor = Color.FromArgb(237, 207, 114); break;
+                    case "256": label.BackColor = Color.FromArgb(237, 204, 97); break;
+                    case "512": label.BackColor = Color.FromArgb(237, 200, 80); break;
+                    case "1024": label.BackColor = Color.FromArgb(237, 197, 63); break;
+                    case "2048": label.BackColor = Color.FromArgb(237, 194, 46); break;
+                    case "4096": label.BackColor = Color.FromArgb(173, 216, 230); break;
+                    case "8192": label.BackColor = Color.FromArgb(135, 206, 250); break;
+                    case "16384": label.BackColor = Color.FromArgb(0, 191, 255); break;
+                    case "32768": label.BackColor = Color.FromArgb(30, 144, 255); break;
+                    case "65536": label.BackColor = Color.FromArgb(0, 0, 255); break;
+                    default: label.BackColor = Color.FromArgb(238, 228, 218); break;
+                }
+            }
         }
     }
 }
