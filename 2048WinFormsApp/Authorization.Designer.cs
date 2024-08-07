@@ -51,6 +51,7 @@
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(199, 23);
             textBoxName.TabIndex = 1;
+            textBoxName.TextChanged += textBoxName_TextChanged;
             // 
             // label1
             // 
@@ -90,8 +91,11 @@
             Controls.Add(label1);
             Controls.Add(textBoxName);
             Controls.Add(buttonLogin);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "Authorization";
             Text = "Авторизация";
+            FormClosed += Authorization_FormClosed;
+            Load += Authorization_Load;
             ResumeLayout(false);
             PerformLayout();
         }
